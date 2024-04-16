@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="./output.css" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="./script.js"></script>
     <title>Weather App</title>
     <style>
         .material-symbols-outlined {
@@ -21,12 +23,27 @@
         <div>
             <form>
                 <div>
-                    <input type="text" title="city" placeholder="Enter a city">
-                    <i class="material-symbols-outlined">search</i>
+                    <div>
+                        <input type="text" id="enteredCity" title="city" placeholder="Enter a city">
+                        <i class="material-symbols-outlined">search</i>
+                    </div>
+                    <ul id="citySuggestions">
+                    </ul>
                 </div>
             </form>
+            <div id="weatherInfo">
+                <h2></h2>
+                <h3 id="temperature"></h3>
+                <p><span id="weatherIcon">
+                        <img src="" alt="" id="weatherIcon1">
+                    </span>
+                    <span id="weatherDesc">
+                    </span>
+                </p>
+                <p id="detail1"></p>
+                <p id="detail2"></p>
+            </div>
         </div>
-        <h1 class="bg-blue-400 italic">Test developer</h1>
     </section>
 </body>
 </html>
