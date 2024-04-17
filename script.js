@@ -52,7 +52,6 @@ const displayCities = (suggestions) => {
 
 icon.addEventListener('click', async(e)=> {
     e.preventDefault()
-    console.log(enteredCity.value);
     await getWeatherInfo(enteredCity.value)
 })
 
@@ -74,7 +73,6 @@ enteredCity.addEventListener('input', async (event)=> {
 })
 
 const getWeatherInfo = async (city) => {
-    
     const cityId = await getCityTarget(city)
     
     const url = `http://api.openweathermap.org/data/2.5/forecast`
@@ -114,6 +112,7 @@ const getCityTarget = async(city)=> {
         const response = await axios.get(url1, {params})
         return response.data.city.id
     } catch (error) {
+        console.log("Error abdul");
         console.log(error);
         throw new Error(error)
     }
