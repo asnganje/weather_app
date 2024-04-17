@@ -1,6 +1,7 @@
 const enteredCity = document.getElementById('enteredCity');
 const citySuggestions = document.getElementById('citySuggestions')
 const weatherInfo = document.getElementById('weatherInfo')
+const icon = document.getElementById('icon')
 
 const apiKey = "1559e2917afa86f5f2b52b489a539b1f"
 const weatherIconElement = document.querySelector('#weatherIcon1');        
@@ -39,6 +40,7 @@ const displayCities = (suggestions) => {
     suggestions.forEach((city) => {
         const li = document.createElement('li')
         li.textContent = `${city.name}`
+        li.classList.add('cursor-pointer')
         li.addEventListener('click', ()=> {
             enteredCity.value = `${city.name}`
             suggestions.innerHTML = '';
@@ -47,6 +49,12 @@ const displayCities = (suggestions) => {
         citySuggestions.appendChild(li)
     });
 }
+
+icon.addEventListener('click', async(e)=> {
+    e.preventDefault()
+    console.log(enteredCity.value);
+    await getWeatherInfo(enteredCity.value)
+})
 
 enteredCity.addEventListener('input', async (event)=> {
     const query = event.target.value;
@@ -66,8 +74,9 @@ enteredCity.addEventListener('input', async (event)=> {
 })
 
 const getWeatherInfo = async (city) => {
+    
     const cityId = await getCityTarget(city)
-
+    
     const url = `http://api.openweathermap.org/data/2.5/forecast`
     const params = {
         id: cityId,
@@ -85,10 +94,10 @@ const getWeatherInfo = async (city) => {
 
         document.querySelector('#citySuggestions').innerHTML = ''
         document.querySelector('#weatherInfo h2').textContent = `Weather in ${data.city.name}`
-        document.querySelector('#temperature').textContent = `Temperature: ${data.list[0].main.temp}°C`
+        document.querySelector('#temperature').textContent = `${data.list[0].main.temp}°C`
         document.querySelector('#weatherDesc').textContent = `${data.list[0].weather[0].description}`
         document.querySelector('#detail1').textContent = `Humidity: ${data.list[0].main.humidity}%`;
-        document.querySelector('#detail2').textContent = `Wind Speed: ${data.list[0].wind.speed} m/s`;
+        document.querySelector('#detail2').textContent = `Wind Speed: ${data.list[0].wind.speed} km/h`;
     } catch (error) {
         throw new Error(error)
     }
@@ -96,7 +105,7 @@ const getWeatherInfo = async (city) => {
 
 const getCityTarget = async(city)=> {
     const url1 = `http://api.openweathermap.org/data/2.5/forecast`;
-    const query = city.name
+    const query = city.name?city.name:city
     const params = {
         q: query,
         appid: apiKey       
