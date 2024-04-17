@@ -18,30 +18,52 @@
         }
     </style>
 </head>
-<body>
-    <section>
-        <div>
-            <form>
-                <div>
-                    <div>
-                        <input type="text" id="enteredCity" title="city" placeholder="Enter a city">
-                        <i class="material-symbols-outlined">search</i>
+<body class="bg-w-img bg-no-repeat bg-cover">
+    <section class="mx-[40%] my-[10%]">
+        <div class="bg-black rounded-md text-white w-[100%]">
+            <form class="w-[100%]">
+                <div class="w-[100%]">
+                    <div class="flex justify-center items-center w-[100%]">
+                        <input 
+                        type="text" 
+                        id="enteredCity" 
+                        title="city" 
+                        placeholder="Enter a city"
+                        class="rounded-md bg-gray-600 m-3 p-1 w-[100%]"
+                        >
+                        <i
+                            id="icon"
+                            class="material-symbols-outlined cursor-pointer text-white"
+                        >
+                        search
+                        </i>
                     </div>
-                    <ul id="citySuggestions">
+                    <ul id="citySuggestions"
+                    class="ml-[10%] mb-[10%] w-[100%]"
+                    >
                     </ul>
                 </div>
             </form>
-            <div id="weatherInfo">
-                <h2></h2>
-                <h3 id="temperature"></h3>
-                <p><span id="weatherIcon">
+            <div 
+                id="weatherInfo" 
+                class="ml-[10%] mb-[10%] w-[100%]"
+                >
+                <h2 class="w-[100%]"></h2>
+                <h3 id="temperature"
+                class="text-lg w-[100%]"
+                >
+            </h3>
+                <p
+                class="flex items-center w-[100%]"
+                >
+                    <span id="weatherIcon">
                         <img src="" alt="" id="weatherIcon1">
                     </span>
                     <span id="weatherDesc">
                     </span>
                 </p>
-                <p id="detail1"></p>
-                <p id="detail2"></p>
+                <p id="detail1" class="w-[100%]"></p>
+                <p id="detail2" class="w-[100%]"></p>
             </div>
         </div>
     </section>
